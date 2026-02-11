@@ -1,0 +1,19 @@
+import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import LoginRegister from './components/LoginRegister/LoginRegister'
+import Login from './components/LoginRegister/Login'
+import Register from './components/LoginRegister/Register'
+
+function App() {
+  return (
+    <>
+    <Routes>
+      <Route path="/" element={<LoginRegister />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
+    </>
+  )
+}
+
+export default App
