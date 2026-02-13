@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const TextInput = () => {
@@ -7,16 +7,28 @@ const [nota, setNota] = useState({
     titulo: "",
     contenido: ""
 });
+const [notaEditId, setNotaEditId] = useState(null);
+
+useEffect(() => {
+    const notaEdit = JSON.parse(localStorage.getItem("notaEdit") || "null");
+    if (notaEdit) {
+    setNota({
+        titulo: notaEdit.titulo || "",
+        contenido: notaEdit.contenido || ""
+    });
+    setNotaEditId(notaEdit.id);
+    }
+}, []);
 
 const handleChange = (event) => {
     const { name, value } = event.target;
     
-    // Si es el contenido, limitar a 1500 palabras
+    // Si es el contenido, limitar a 100 palabras
     if (name === "contenido") {
-    const palabras = value.trim().split(/\s+/).filter(palabra => palabra.length > 0);
-    if (palabras.length > 100) {
-        return; // No actualizar si excede 100 palabras
-    }
+        const palabras = value.trim().split(/\s+/).filter(palabra => palabra.length > 0);
+        if (palabras.length > 100) {
+            return; // No actualizar si excede 100 palabras
+        }
     }
 
     setNota((prev) => ({
@@ -25,15 +37,28 @@ const handleChange = (event) => {
     }));
 };
 
-const contarPalabras = () => {
-    const palabras = nota.contenido.trim().split(/\s+/).filter(palabra => palabra.length > 0);
-    return palabras.length;
-};
-
 const handleAgregar = (event) => {
     event.preventDefault();
-    console.log("Nota guardada:", nota);
+    const notasGuardadas = JSON.parse(localStorage.getItem("notas") || "[]");
+    const notaEditActual = notaEditId
+        ? notasGuardadas.find((item) => item.id === notaEditId)
+        : null;
+    const notaNueva = {
+        id: notaEditId || Date.now(),
+        titulo: nota.titulo.trim(),
+        contenido: nota.contenido.trim(),
+        creadaEn: notaEditActual?.creadaEn || new Date().toISOString()
+    };
+
+    const nuevasNotas = notaEditId
+        ? notasGuardadas.map((item) => (item.id === notaEditId ? { ...item, ...notaNueva } : item))
+        : [notaNueva, ...notasGuardadas];
+
+    localStorage.setItem("notas", JSON.stringify(nuevasNotas));
+    localStorage.removeItem("notaEdit");
+
     // Aquí se enviará la nota al backend cuando esté listo
+    navigate("/home");
 };
 
 return (
