@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -21,6 +21,10 @@ const Login = () => {
 
     // cuando el sistema este terminado, aqui se enviara el formData al backend
     console.log("Login submit:", formData);
+    
+    // Guardar el nombre del usuario en localStorage
+    localStorage.setItem("userName", formData.loginId);
+    
   };
 
   return (
@@ -51,7 +55,7 @@ const Login = () => {
         />
       <div className="login-buttons">
         <button type="button" onClick={() => navigate("/")}>Volver</button>
-        <button type="submit">Entrar</button>
+        <button type="submit" onClick={() => navigate("/home")}>Entrar</button>
       </div>
       </form>
     </div>

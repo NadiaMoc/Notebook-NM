@@ -61,6 +61,7 @@ return (
     <h1 className="logo">Notebook NM</h1>
     <p>Crear cuenta</p>
     <form className="register-form" onSubmit={handleSubmit}>
+        
         <label htmlFor="username">Usuario</label>
         <input
         id="username"
@@ -139,7 +140,7 @@ return (
 
         <div className="register-buttons">
         <button type="button" onClick={() => navigate("/")}>Volver</button>
-        <button type="submit" disabled={passwordErrors.length > 0 || !passwordsMatch}>
+        <button type="submit" disabled={passwordErrors.length > 0 || !passwordsMatch} onClick={() => navigate("/home")}>
         Registrarse
         </button>
         </div>
