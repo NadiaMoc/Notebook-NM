@@ -1,5 +1,5 @@
 .text-input-container{
-        background-color: #F5E7C6;
+    background-color: #F5E7C6;
     width: 480px;
     height: 650px;
     display: flex;
@@ -10,6 +10,7 @@
     border: 2px solid #FA8112;
     padding: 32px 24px;
     box-sizing: border-box;
+    margin: 0 auto;
     overflow-y: auto;
 }
 
@@ -23,7 +24,6 @@
 
 .text-input-container::-webkit-scrollbar-thumb {
     background: #FA8112;
-
 }
 
 .text-input-container::-webkit-scrollbar-thumb:hover {
@@ -32,6 +32,7 @@
 
 .text-input-container h1 {
     margin-bottom: 32px;
+    font-size: clamp(28px, 8vw, 40px);
 }
 
 .nota-form{
@@ -53,7 +54,7 @@
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     color: #222222;
-    font-size: 20px;
+    font-size: clamp(16px, 4vw, 20px);
 }
 
 .nota-input input,
@@ -63,7 +64,8 @@
     border: 1px solid #FA8112;
     border-radius: 4px;
     font-family: "Poppins", sans-serif;
-    font-size: 14px;
+    font-size: clamp(13px, 3vw, 14px);
+    box-sizing: border-box;
 }
 
 .nota-buttons {
@@ -79,7 +81,7 @@
     color: white;
     border: none;
     padding: 10px 16px;
-    font-size: 16px;
+    font-size: clamp(14px, 4vw, 16px);
     cursor: pointer;
     border-radius: 4px;
     font-family: "Poppins", sans-serif;
@@ -94,4 +96,55 @@
 .nota-button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+}
+
+@media(max-width: 480px) {
+    .text-input-container {
+        width: 90%;
+        height: auto;
+        padding: 24px 16px;
+        border-radius: 8px;
+    }
+
+    .text-input-container h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .nota-input label {
+        font-size: 16px;
+    }
+
+    .nota-input textarea {
+        min-height: 180px;
+    }
+
+    .nota-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media(min-width: 481px) and (max-width: 768px) {
+    .text-input-container {
+        width: 85%;
+        height: auto;
+        padding: 28px 20px;
+        border-radius: 8px;
+    }
+
+    .text-input-container h1 {
+        font-size: 32px;
+    }
+
+    .nota-input textarea {
+        min-height: 200px;
+    }
+}
+
+@media(min-width: 769px) {
+    .text-input-container {
+        width: 480px;
+        height: 650px;
+    }
 }

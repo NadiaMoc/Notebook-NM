@@ -2,7 +2,7 @@
 .register-page {
     background-color: #F5E7C6;
     width: 480px;
-    height: 670px;
+    min-height: 670px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,32 +11,13 @@
     border: 2px solid #FA8112;
     padding: 32px 24px;
     box-sizing: border-box;
-    overflow-y: auto;
-}
-
-/* Personalizar scrollbar */
-.register-page::-webkit-scrollbar {
-    width: 10px;
-}
-
-.register-page::-webkit-scrollbar-track {
-    background: #F5E7C6;
-}
-
-.register-page::-webkit-scrollbar-thumb {
-    background: #FA8112;
-
-}
-
-.register-page::-webkit-scrollbar-thumb:hover {
-    background: #E07000;
 }
 
 .register-page p{
     margin-top: 6px;
     margin-bottom: 6px;
     margin-top: 0px;
-    font-size: 20px;
+    font-size: clamp(14px, 4vw, 20px);
     font-family: "Poppins", sans-serif;
     color: #222222;
 }
@@ -67,7 +48,7 @@
     border: 1px solid #FA8112;
     border-radius: 4px;
     font-family: "Poppins", sans-serif;
-    font-size: 14px;
+    font-size: clamp(14px, 4vw, 20px);
 }
 
 .password-input-wrapper {
@@ -84,7 +65,7 @@
     border: 1px solid #FA8112;
     border-radius: 4px;
     font-family: "Poppins", sans-serif;
-    font-size: 14px;
+    font-size: clamp(14px, 4vw, 20px);
 }
 
 .toggle-password {
@@ -130,7 +111,7 @@
     color: white;
     border: none;
     padding: 10px 16px;
-    font-size: 16px;
+    font-size: clamp(14px, 4vw, 20px);
     cursor: pointer;
     border-radius: 4px;
     font-family: "Poppins", sans-serif;
@@ -147,5 +128,102 @@
     cursor: not-allowed;
 }
 
+@media (max-width: 480px){
+    .register-page {
+        width: 90%;
+        height: auto;
+        padding: 24px 16px;
+        border-radius: 8px;
+    }
 
+    .register-page p {
+        font-size: clamp(14px, 4vw, 20px);
+        margin-bottom: 20px;
+    }
 
+    .form-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        width: 100%;
+        position: relative;
+    }
+
+    .form-group label {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 8px 12px;
+        padding-right: 36px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .toggle-password {
+        right: 8px;
+        top: auto;
+        bottom: 8px;
+        transform: none;
+    }
+
+    .button-register {
+        padding: 10px 20px;
+    }
+}
+
+@media (min-width:481px) and (max-width: 768px) {
+    .register-page {
+        width: 90%;
+        height: auto;
+        padding: 32px 24px;
+        border-radius: 8px;
+    }
+
+    .register-page p {
+        font-size: clamp(14px, 4vw, 20px);
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+        position: relative;
+    }
+
+    .form-group label {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 8px 12px;
+        padding-right: 36px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .toggle-password {
+        right: 8px;
+        top: auto;
+        bottom: 8px;
+        transform: none;
+    }
+
+    .button-register {
+        padding: 12px 24px;
+    }
+}
+
+@media (min-width: 769px) {
+    .register-page {
+        width: 100%;
+        max-width: 480px;
+        min-height: 480px;
+    }
+}
