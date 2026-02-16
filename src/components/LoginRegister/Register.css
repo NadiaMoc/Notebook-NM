@@ -1,0 +1,151 @@
+
+.register-page {
+    background-color: #F5E7C6;
+    width: 480px;
+    height: 670px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    border: 2px solid #FA8112;
+    padding: 32px 24px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* Personalizar scrollbar */
+.register-page::-webkit-scrollbar {
+    width: 10px;
+}
+
+.register-page::-webkit-scrollbar-track {
+    background: #F5E7C6;
+}
+
+.register-page::-webkit-scrollbar-thumb {
+    background: #FA8112;
+
+}
+
+.register-page::-webkit-scrollbar-thumb:hover {
+    background: #E07000;
+}
+
+.register-page p{
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-top: 0px;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    color: #222222;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+}
+
+.form-group label {
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    min-width: 100px;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #FA8112;
+    border-radius: 4px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+}
+
+.password-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    position: relative;
+}
+
+.password-input-wrapper input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #FA8112;
+    border-radius: 4px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+}
+
+.toggle-password {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    font-size: 18px;
+    color: #FA8112;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password:hover {
+    color: #E07000;
+}
+
+.password-errors {
+    font-size: 14px !important;
+    color: #E07000 !important;
+    margin: 0 !important;
+    font-family: "Poppins", sans-serif;
+}
+
+.password-error {
+    font-size: 14px !important;
+    color: #E07000 !important;
+    margin: 0 !important;
+    font-family: "Poppins", sans-serif;
+}
+
+.register-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.button-register {
+    background-color: #FA8112;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.button-register:hover {
+    background-color: #E07000;
+}
+
+.button-register:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+
+

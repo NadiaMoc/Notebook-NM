@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import "./TextInput.css"
 
 const TextInput = () => {
 const navigate = useNavigate();
@@ -63,7 +64,9 @@ const handleAgregar = (event) => {
 
 return (
     <div className="text-input-container">
+        <h1 className="logo">Notebook NM</h1>
     <form className="nota-form" onSubmit={handleAgregar}>
+        <div className='nota-input'>
         <label htmlFor="titulo">Título</label>
         <input
         id="titulo"
@@ -73,8 +76,9 @@ return (
         onChange={handleChange}
         placeholder="Ingresa el título de tu nota"
         required
-        />
+        /></div>
 
+        <div className='nota-input'>
         <label htmlFor="contenido">Contenido</label>
         <textarea
         id="contenido"
@@ -83,11 +87,11 @@ return (
         onChange={handleChange}
         placeholder="Ingresa el contenido de tu nota (máximo 100 palabras)"
         rows="10"
-        />
+        /></div>
 
         <div className="nota-buttons">
-        <button type="button" onClick={() => navigate("/home")}>Volver</button>
-        <button type="submit">Agregar</button>
+        <button className="nota-button" type="button" onClick={() => navigate("/home")}>Volver</button>
+        <button className="nota-button" type="submit">Agregar</button>
         </div>
     </form>
     </div>

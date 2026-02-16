@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Register.css"
+
 
 const Register = () => {
 const navigate = useNavigate();
@@ -11,6 +13,8 @@ const [formData, setFormData] = useState({
     password: "",
     confirmPassword: "",
 });
+const [showPassword, setShowPassword] = useState(false);
+const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
 const getPasswordErrors = (password) => {
     const errors = [];
@@ -19,13 +23,13 @@ const getPasswordErrors = (password) => {
     errors.push("Minimo 8 caracteres");
     }
     if (!/[A-Z]/.test(password)) {
-    errors.push("Al menos 1 mayuscula");
+    errors.push("al menos 1 mayuscula");
     }
     if (!/[0-9]/.test(password)) {
-    errors.push("Al menos 1 numero");
+    errors.push("1 numero");
     }
     if (!/[^A-Za-z0-9]/.test(password)) {
-    errors.push("Al menos 1 simbolo");
+    errors.push("y 1 simbolo");
     }
 /* hacer mas validaciones para los otros campos */
     return errors;
@@ -62,85 +66,117 @@ return (
     <p>Crear cuenta</p>
     <form className="register-form" onSubmit={handleSubmit}>
         
-        <label htmlFor="username">Usuario</label>
-        <input
-        id="username"
-        name="username"
-        type="text"
-        autoComplete="username"
-        value={formData.username}
-        onChange={handleChange}
-        required
-        />
+        <div className="form-group">
+            <label htmlFor="username">Usuario</label>
+            <input
+            id="username"
+            name="username"
+            type="text"
+            autoComplete="username"
+            value={formData.username}
+            onChange={handleChange}
+            placeholder="JuanPérez123"
+            required
+            />
+        </div>
 
-        <label htmlFor="firstName">Nombre</label>
-        <input
-        id="firstName"
-        name="firstName"
-        type="text"
-        autoComplete="given-name"
-        value={formData.firstName}
-        onChange={handleChange}
-        required
-        />
+        <div className="form-group">
+            <label htmlFor="firstName">Nombre</label>
+            <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            autoComplete="given-name"
+            value={formData.firstName}
+            onChange={handleChange}
+            placeholder="Juan"
+            required
+            />
+        </div>
 
-        <label htmlFor="lastName">Apellido</label>
-        <input
-        id="lastName"
-        name="lastName"
-        type="text"
-        autoComplete="family-name"
-        value={formData.lastName}
-        onChange={handleChange}
-        required
-        />
+        <div className="form-group">
+            <label htmlFor="lastName">Apellido</label>
+            <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            autoComplete="family-name"
+            value={formData.lastName}
+            onChange={handleChange}
+            placeholder="Pérez"
+            required
+            />
+        </div>
 
-        <label htmlFor="email">Email</label>
-        <input
-        id="email"
-        name="email"
-        type="email"
-        autoComplete="email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-        />
+        <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="usuario@ejemplo.com"
+            required
+            />
+        </div>
 
-        <label htmlFor="password">Contrasena</label>
-        <input
-        id="password"
-        name="password"
-        type="password"
-        autoComplete="new-password"
-        value={formData.password}
-        onChange={handleChange}
-        required
-        />
+        <div className="form-group">
+            <label htmlFor="password">Contraseña</label>
+            <div className="password-input-wrapper">
+                <input
+                id="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                autoComplete="new-password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Contraseña123*"
+                required
+                />
+                <button
+                    type="button"
+                    className="toggle-password"
+                    onClick={() => setShowPassword(!showPassword)}
+                >
+                    <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
+                </button>
+            </div>
+        </div>
         {passwordErrors.length > 0 && (
-        <ul className="password-errors">
-            {passwordErrors.map((error) => (
-            <li key={error}>{error}</li>
-            ))}
-        </ul>
+        <p className="password-errors">({passwordErrors.join(', ')})</p>
         )}
 
-        <label htmlFor="confirmPassword">Confirmar contrasena</label>
-        <input
-        id="confirmPassword"
-        name="confirmPassword"
-        type="password"
-        autoComplete="new-password"
-        value={formData.confirmPassword}
-        onChange={handleChange}
-        required
-        />
+        <div className="form-group">
+            <label htmlFor="confirmPassword">Confirmar contraseña</label>
+            <div className="password-input-wrapper">
+                <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type={showConfirmPassword ? "text" : "password"}
+                autoComplete="new-password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                placeholder="Contraseña123*"
+                required
+                />
+                <button
+                    type="button"
+                    className="toggle-password"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                    <i className={`bi ${showConfirmPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
+                </button>
+            </div>
+        </div>
         {!passwordsMatch && formData.confirmPassword.length > 0 && (
-        <p className="password-mismatch">Las contrasenas no coinciden</p>
+        <p className="password-error">Las contraseñas no coinciden</p>
         )}
 
         <div className="register-buttons">
-        <button type="button" onClick={() => navigate("/")}>Volver</button>
-        <button type="submit" disabled={passwordErrors.length > 0 || !passwordsMatch} onClick={() => navigate("/home")}>
+        <button className="button-register" type="button" onClick={() => navigate("/")}>Volver</button>
+        <button className="button-register" type="submit" disabled={passwordErrors.length > 0 || !passwordsMatch} onClick={() => navigate("/login")}>
         Registrarse
         </button>
         </div>
