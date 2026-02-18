@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Titan+One&display=swap');
+
+
+
+
+
+.contenedor-principal {
+    background-color: #F5E7C6;
+    width: 100%;
+    max-width: 480px;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    border: 2px solid #FA8112;
+    padding: 32px 24px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.logo{
+    font-family: "Poppins", sans-serif; 
+    color: #FA8112;
+    font-weight: 700;
+    font-size: clamp(28px, 8vw, 40px);
+    margin: 0;
+}
+
+.contenedor-principal p {
+    margin-top: 6px;
+    margin-bottom: 0;
+    font-size: clamp(14px, 4vw, 20px);
+    font-family: "Poppins", sans-serif;
+    color: #222222;
+}
+
+.contenedor-top {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.contenedor-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 12px;
+    align-items: center;
+}
+
+.button {
+    background-color: #FA8112;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: clamp(14px, 4vw, 20px);
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #E67C0C;
+}
+
+/* Media query para celulares pequeños */
+@media (max-width: 480px) {
+    .contenedor-principal {
+        width: 90%;
+        min-height: auto;
+        padding: 24px 16px;
+        border-radius: 8px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    .contenedor-principal p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+/* Media query para tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    .contenedor-principal {
+        width: 85%;
+        min-height: 500px;
+    }
+
+    .button {
+        padding: 12px 24px;
+    }
+}
+
+/* Media query para desktop */
+@media (min-width: 769px) {
+    .contenedor-principal {
+        width: 100%;
+        max-width: 480px;
+        min-height: 480px;
+    }
+}
